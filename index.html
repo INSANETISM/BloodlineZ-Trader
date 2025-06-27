@@ -393,10 +393,9 @@ text-overflow: ellipsis;
 margin-top: 10px;
 
 margin-bottom: 10px;
-
+max-height: 300px; /* limit height */
+overflow-y: auto;  /* enable scrolling */
 }
-
-
 
 .roles-container .role-label {
 
@@ -664,6 +663,157 @@ transform: scale(1.08);
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+}
+/* Responsive styling for mobile devices */
+@media (max-width: 600px) {
+  /* Stack main layout vertically and add padding */
+  .main-layout {
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Calculator and roles container become full width and stacked */
+  .calculator,
+  .roles-container {
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Roles container stacks vertically */
+  .roles-container {
+    align-items: stretch;
+  }
+
+  /* Buttons column expands full width and margins reset */
+  .button-column {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5px;
+  }
+
+  /* Buttons in button column get wider and bigger tap targets */
+  .button-column button {
+    width: auto;
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 12px 8px;
+    min-width: 80px;
+  }
+
+  /* Roles column stacks vertically with some gap */
+  .roles-column {
+    flex-direction: column;
+    margin-left: 0;
+    gap: 10px;
+  }
+
+  /* Role groups fill width and stack buttons */
+  .roles-column > div {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two columns, adjust as needed */
+    gap: 8px;
+  }
+
+  /* Role buttons fill grid cells and get bigger */
+  .role-btn {
+    width: 100%;
+    min-width: auto;
+    height: 40px;
+    font-size: 14px;
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  /* Tab container adjusts */
+  .tab {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Tab buttons full width and bigger font */
+  .tab button {
+    flex: 1 1 100%;
+    min-width: 0;
+    font-size: 16px;
+    padding: 14px 0;
+    margin: 5px 0;
+  }
+
+  /* Buy/Sell buttons container wraps with smaller buttons */
+  #buyItemButtons,
+  #itemButtons {
+    justify-content: center;
+  }
+
+  /* Item buttons smaller width for smaller screens */
+  .item-button {
+    width: 120px;
+    font-size: 13px;
+    padding: 8px 4px;
+    margin: 4px;
+  }
+
+  /* Summary box scrollable with max height */
+  .summary {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+  
+  /* Modal content smaller width on mobile */
+  .modal-content {
+    width: 95%;
+    max-height: 70vh;
+  }
+}
+/* Responsive tweaks for smaller screens */
+@media (max-width: 600px) {
+  /* Make role buttons wider and allow wrapping */
+  .role-btn {
+    width: auto;
+    min-width: 120px;   /* min width but flexible */
+    font-size: 12px;    /* slightly bigger text */
+    white-space: normal; /* allow wrapping */
+    padding: 5px 10px;
+  }
+
+  /* Calculate button fits better */
+  #calculateBtn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 10px;
+  }
+
+  /* Summary modal adjustments */
+  .modal-content {
+    width: 95% !important; /* almost full screen width */
+    max-height: 70vh !important; /* smaller height */
+    padding: 15px !important;
+    font-size: 14px !important;
+  }
+
+  /* Buy/Sell buttons wrapping nicely */
+  .item-button {
+    min-width: 110px;
+    font-size: 13px;
+    white-space: normal;
+    padding: 8px 6px;
+  }
+
+  /* Tabs buttons smaller and flexible */
+  .tab button {
+    min-width: 120px;
+    font-size: 14px;
+    padding: 6px 8px;
+  }
 }
 </style>
 
@@ -2337,7 +2487,6 @@ const totalPrice = discountedPrice * quantity;
 
 div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
 
-0
 
 )} Cr <button class="removeOneBtn" style="background-color: orange;">x</button><button class="removeAllBtn" style="background-color: red;">x</button>`;
 
