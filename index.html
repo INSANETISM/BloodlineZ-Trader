@@ -1608,7 +1608,7 @@ function populateBulkOptions(container, item, summaryDiv, type) {
     });
   }
 
-  addReturnButton(container, type); // Return button always at bottom
+  addReturnButton(container, type); 
 }
 
 function handleBuyItemClick(item) {
@@ -1838,16 +1838,16 @@ function populateSellButtons() {
         // Show options regardless of role status
         handleSellItemClick(item);
       });
-     } else if (item.name === "Set of 4 Teddy Bears") {
-    createButton(itemButtonsDiv, item.name, () => {
-      alert("Add a box of nails or suppressor of your choice!");
-      handleSellItemClick(item); // allow proceeding anyway
-    });
-  } else if (item.name === "Cannabis") {
-    createButton(itemButtonsDiv, item.name, () => {
-      alert("Each x1 Cannabis represents 1 full crate (50 slots).");
-      handleSellItemClick(item); // still proceeds
-    });
+    } else if (item.name === "Set of 4 Teddy Bears") {
+      createButton(itemButtonsDiv, item.name, () => {
+        alert("Add a box of nails or suppressor of your choice!");
+        handleSellItemClick(item); // allow proceeding anyway
+      });
+    } else if (item.name === "Cannabis") {
+      createButton(itemButtonsDiv, item.name, () => {
+        alert("Each x1 Cannabis represents 1 full crate (50 slots).");
+        handleSellItemClick(item); // still proceeds
+      });
     } else {
       createButton(itemButtonsDiv, item.name, () => handleSellItemClick(item));
     }
@@ -1858,11 +1858,11 @@ function populateSellButtons() {
     pelts.forEach(pelt => {
       createButton(itemButtonsDiv, pelt.name, () => handleSellItemClick(pelt));
     });
-    addReturnButton(itemButtonsDiv, "sell");
+    addReturnButton(itemButtonsDiv, "sell"); // back button only here in submenu
   });
 
-  addReturnButton(itemButtonsDiv, "sell");
 }
+
 
 function populateRoles() {
 Object.keys(roles).forEach((role) => {
