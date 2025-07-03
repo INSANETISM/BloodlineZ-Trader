@@ -1265,9 +1265,10 @@ const buyitems = {
 // --- SELL ITEMS ---
 const sellitems = {
   Sets: [
-    { name: "Teddy Bears (4/4)", price: 500, bulkOptions: [1] },
-    { name: "Payday Masks (4/4)", price: 2500, bulkOptions: [1] },
-    { name: "Sneakers (5/5)", price: 1000, bulkOptions: [1] }
+    { name: "Teddy Bears (4/4)", price: 500, bulkOptions: [1, 5, 10] },
+    { name: "Payday Masks (4/4)", price: 2500, bulkOptions: [1, 5, 10] },
+    { name: "Fish (5/5)", price: 1000, bulkOptions: [1, 5, 10] },
+    { name: "Sneakers (5/5)", price: 1000, bulkOptions: [1, 5, 10] }
   ],
   Pelts: {
     Wild: [
@@ -1403,7 +1404,7 @@ const roles = {
   "Master Baiter": {
     description: "Turn in 25 Mackerel & 25 Carp or 25 Pollock & 25 Trout. Get $15K and the role.",
     bonuses: {
-      "Fish Bonus": 15000  
+      "Fish (5/5)": 1500
     }
   },
   "Trap God": {
@@ -1565,7 +1566,6 @@ const roles = {
 };
 
 const roleBonuses = {
-  "Master Baiter": 15000,
   "Pit Boss": 10000,
   "Cap Collector": 3500,
   "Boom Daddy": 100000,
@@ -1589,6 +1589,7 @@ const itemsWithRoleTurnIn = new Set([
   "Cow Pelt",
   "Sheep Pelt",
   "Teddy Bears (4/4)",
+  "Fish (5/5)",
   "Sneakers (5/5)",
   "Mackerel",    
   "Carp",        
@@ -1830,6 +1831,13 @@ function handleRoleTurnIn(item, summaryDiv) {
       // Sneaker Head: Turn in all 5 Converse sneaker colors
       addItemToSummary(item.name, 4, item.price, summaryDiv);
       break;
+
+    case "Fish (5/5)":
+     // Example: Turn in Mackerel + Carp
+     addItemToSummary("Mackerel / Pollock", 25, 0, summaryDiv);
+     addItemToSummary("Carp / Trout", 25, 0, summaryDiv);
+     addItemToSummary("Master Baiter Reward", 1, 15000, summaryDiv);
+     break;
 
     case "Books":
       // Book of ProfitZ: Sell 300 books & 1 bible at once
@@ -2129,7 +2137,6 @@ if (hasRole("First Bloodz")) {
 
   // Role flat currency bonuses
   const roleBonuses = {
-    "Master Baiter": 15000,
     "Cap Collector": 3500,
     "Pit Boss": 10000,
     "Bear Broker": 2500,
@@ -2146,7 +2153,7 @@ if (hasRole("First Bloodz")) {
     }
   });
 
-  let finalTotal = discountedBuy + bonusTotal;
+  let finalTotal = discountedBuy + totalSell + bonusTotal;
 
   // Final message in the new order
   let message = `🧾 Buy Summary:\n${buyDetails || "(No items)"}\n` +
