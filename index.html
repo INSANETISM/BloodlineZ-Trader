@@ -2145,11 +2145,11 @@ if (hasRole("First Bloodz")) {
 
   let bonusTotal = 0;
   document.querySelectorAll(".role-btn.active").forEach((btn) => {
-    const role = btn.dataset.role;
-    if (roleBonuses[role]) {
-      bonusTotal += roleBonuses[role];
-    }
-  });
+  const role = btn.dataset.role;
+  if (roleBonuses.hasOwnProperty(role)) {
+    bonusTotal += roleBonuses[role];
+   }
+ });
 
   let finalTotal = discountedBuy + totalSell + bonusTotal;
 
