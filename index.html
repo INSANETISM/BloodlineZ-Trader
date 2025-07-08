@@ -876,6 +876,18 @@ const buyitems = {
 
 { name: "10 Rnd VS89 Mag", price: 500 }
 
+],
+
+"Pistol Mags": [
+
+{ name: "MKII Mag", price: 50 },
+
+{ name: "CR75 Mag", price: 50 },
+
+{ name: "FX45 Mag", price: 100 },
+
+{ name: "Deagle Mag", price: 100 }
+
 ]
 
 },
@@ -1200,7 +1212,7 @@ const buyitems = {
 
 { name: "Pickaxe", price: 400 },
 
-{ name: "Field Shovel", price: 0 },
+{ name: "Field Shovel", price: 400 },
 
 { name: "Crowbar", price: 300 },
 
@@ -1221,8 +1233,6 @@ const buyitems = {
 "Vehicles": {
 
 "Repair": [
-
-{ name: "Jerry Can", price: 200 },
 
 { name: "Blowtorch", price: 400 },
 
@@ -2134,14 +2144,6 @@ if (hasRole("First Bloodz")) {
 }
 
   let discountedBuy = totalBuy * discount;
-
-  // Role flat currency bonuses
-  const roleBonuses = {
-    "Cap Collector": 3500,
-    "Pit Boss": 10000,
-    "Boom Daddy": 100000,
-    // Add more if needed
-  };
 
   let bonusTotal = 0;
   document.querySelectorAll(".role-btn.active").forEach((btn) => {
