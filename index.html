@@ -784,7 +784,9 @@ const buyitems = {
 
 { name: "M4 Polymer Handguard", price: 50 },
 
-{ name: "M4 MP Handguard", price: 50 }
+{ name: "M4 MP Handguard", price: 50 },
+
+{ name: "Universal Flashlight", price: 500 }
 
 ]
 
@@ -1050,7 +1052,7 @@ const buyitems = {
 
 { name: "All Ski Masks", price: 200 },
 
-{ name: "Mime Mask", price: 250 },
+{ name: "Mime Mask", price: 100 },
 
 { name: "Carnival Mask", price: 100 }
 
@@ -1098,13 +1100,15 @@ const buyitems = {
 
 { name: "NBC Pants", price: 1000, bulkOptions: [1, 2, 5] },
 
-{ name: "NBC Boots", price: 1000, bulkOptions: [1, 2, 5] },
+{ name: "NBC Boots", price: 500, bulkOptions: [1, 2, 5] },
 
-{ name: "NBC Gloves", price: 1000, bulkOptions: [1, 2, 5] }
+{ name: "NBC Gloves", price: 500, bulkOptions: [1, 2, 5] }
 
 ],
 
 "Miscellaneous": [
+
+{ name: "Punchcard", price: 50000 },
 
 { name: "Canteen", price: 100 },
 
@@ -1196,11 +1200,13 @@ const buyitems = {
 
 "Building": [
 
-{ name: "Box of Nails", price: 7000, bulkOptions: [1, 5, 10, 20] },
+{ name: "Box of Nails", price: 7000, bulkOptions: [1, 5] },
 
-{ name: "Sharpening Stones", price: 500, bulkOptions: [1, 5, 10, 20] },
+{ name: "Sharpening Stones", price: 500, bulkOptions: [1, 5, 10] },
 
 { name: "4Dial Combo Lock", price: 3500, bulkOptions: [1, 5, 10] },
+
+{ name: "3Dial Combo Lock", price: 1750, bulkOptions: [1, 5, 10] },
 
 { name: "Hammer", price: 300 },
 
@@ -2077,7 +2083,7 @@ function clearAllTransactions() {
     .forEach((div) => (div.innerHTML = ""));
   
   updateSummaries();
-  applyRoleBonuses(); // ← Add this line
+  applyRoleBonuses(); 
 }
 
 function clearRoles() {
@@ -2086,7 +2092,7 @@ function clearRoles() {
     .forEach((button) => button.classList.remove("active"));
 
   updateRoleEffects();
-  applyRoleBonuses(); // ← Add this line
+  applyRoleBonuses(); 
 }
 
 function calculateAndShowTotals() {
